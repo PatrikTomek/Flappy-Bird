@@ -6,7 +6,7 @@ let birdLeft = 220;
 let birdBottom = 100;
 let gravity = 2;
 let isGameOver = false;
-let gap = 450;
+let gap = 430;
 
 const startGame = () => {
   birdBottom -= gravity;
