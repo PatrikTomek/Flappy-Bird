@@ -26,7 +26,8 @@ const game = () => {
   const jump = () => {
     if (birdBottom < 500) {
       birdBottom += 50;
-      bird.style.bottom = birdBottom + "px";
+      bird.style.WebkitTransitionDuration = ".05s";
+      bird.style.webkitTransform = birdBottom + "px";
     }
   };
 
@@ -77,7 +78,16 @@ const game = () => {
 
   generateObstacle();
 
+  const crashed = () => {
+    bird.style.WebkitTransitionDuration = ".5s";
+    bird.style.webkitTransform = "rotate(50deg)";
+    bird.animate({
+      bottom: 0
+    }, 5000);
+  };
+
   const gameOver = () => {
+    crashed();
     clearInterval(gameTimerId);
     isGameOver = true;
     document.removeEventListener("keyup", control);
