@@ -30,6 +30,7 @@ const game = () => {
     }
   };
 
+  document.addEventListener("click", jump);
   document.addEventListener("keyup", control);
 
   const generateObstacle = () => {
@@ -80,7 +81,13 @@ const game = () => {
     clearInterval(gameTimerId);
     isGameOver = true;
     document.removeEventListener("keyup", control);
+    document.removeEventListener("click", jump);
     gameOverAlert.style.display = "flex";
+    const reload = () => {
+      window.location.reload();
+    };
+    document.addEventListener("keyup", reload);
+    document.addEventListener("click", reload);
   };
 };
 
@@ -88,10 +95,12 @@ let isGameRunning = false;
 const startSign = document.querySelector(".start-sign");
 
 const runGame = (e) => {
-  if (e.keyCode === 32 && !isGameRunning) {
+  if ((e.keyCode === 32 || e.type === "click") && !isGameRunning) {
     isGameRunning = true;
     startSign.style.display = "none";
     game();
   }
 };
+
+document.addEventListener("click", runGame);
 document.addEventListener("keyup", runGame);
