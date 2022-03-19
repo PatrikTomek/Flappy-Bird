@@ -37,7 +37,7 @@
 }
 
 .sky {
-  background-image: url('./img/sky.png');
+  background-image: url("./img/sky.png");
   width: 500px;
   height: 580px;
   position: absolute;
@@ -57,6 +57,9 @@
   position: absolute;
   width: 60px;
   height: 45px;
+  border-radius: 50%;
+  left: 220px;
+  bottom: 100px;
 }
 
 .obstacle {
@@ -72,4 +75,27 @@
   width: 60px;
   height: 300px;
   position: absolute;
+}
+
+.start-sign {
+  background: url("./img/start-sign.png") 0px 0px no-repeat;
+  background-size: 490px;
+  width: 400px;
+  height: 70px;
+  position: absolute;
+  top: 275px;
+  left: 50px;
+  z-index: +3;
+}
+
+.gameOverAlert {
+  background: url("./img/game-over.png") 0px 0px no-repeat;
+  background-size: 300px;
+  width: 300px;
+  height: 80px;
+  position: absolute;
+  top: 250px;
+  left: 100px;
+  z-index: +6;
+  display: none;
 }
