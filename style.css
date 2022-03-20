@@ -99,3 +99,16 @@
   z-index: +6;
   display: none;
 }
+
+.score-sign {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 30px;
+  color: white;
+  width: 272px;
+  height: 35px;
+  position: absolute;
+  top: 355px;
+  left: 117px;
+  z-index: +6;
+  display: none;
+}

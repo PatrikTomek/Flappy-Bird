@@ -3,12 +3,14 @@ const game = () => {
   const gameDisplay = document.querySelector(".game-container");
   const ground = document.querySelector(".ground");
   const gameOverAlert = document.querySelector(".gameOverAlert");
+  const scoreSign = document.querySelector(".score-sign");
 
   let birdLeft = 220;
   let birdBottom = 100;
   let gravity = 2;
   let isGameOver = false;
   let gap = 430;
+  let score = 0;
 
   const startGame = () => {
     birdBottom -= gravity;
@@ -25,8 +27,8 @@ const game = () => {
 
   const jump = () => {
     if (birdBottom < 500) {
-      birdBottom += 55;
-      bird.style.WebkitTransitionDuration = ".07s";
+      birdBottom += 60;
+      bird.style.WebkitTransitionDuration = ".1s";
       bird.style.webkitTransform = birdBottom + "px";
     }
   };
@@ -51,12 +53,16 @@ const game = () => {
 
     const moveObstacle = () => {
       if (!isGameOver) {
-        obstacleLeft -= 2.5;
+        obstacleLeft -= 3;
         obstacle.style.left = obstacleLeft + "px";
         topObstacle.style.left = obstacleLeft + "px";
       }
 
-      if (obstacleLeft === -60) {
+      if (obstacleLeft === 200) {
+        score += 1;
+      }
+
+      if (obstacleLeft === -55) {
         clearInterval(TimerId);
         gameDisplay.removeChild(obstacle);
         gameDisplay.removeChild(topObstacle);
@@ -102,6 +108,8 @@ const game = () => {
     setTimeout(() => {
       document.addEventListener("keyup", reload);
       document.addEventListener("click", reload);
+      scoreSign.style.display = "flex";
+      scoreSign.innerHTML = "SCORE: " + score;
     }, 1000);
   };
 };
