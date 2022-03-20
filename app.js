@@ -25,8 +25,8 @@ const game = () => {
 
   const jump = () => {
     if (birdBottom < 500) {
-      birdBottom += 50;
-      bird.style.WebkitTransitionDuration = ".05s";
+      birdBottom += 55;
+      bird.style.WebkitTransitionDuration = ".07s";
       bird.style.webkitTransform = birdBottom + "px";
     }
   };
@@ -36,7 +36,7 @@ const game = () => {
 
   const generateObstacle = () => {
     let obstacleLeft = 500;
-    let randomHeight = Math.random() * 160;
+    let randomHeight = Math.random() * 150;
     let obstacleBottom = randomHeight;
     const obstacle = document.createElement("div");
     const topObstacle = document.createElement("div");
@@ -51,7 +51,7 @@ const game = () => {
 
     const moveObstacle = () => {
       if (!isGameOver) {
-        obstacleLeft -= 2;
+        obstacleLeft -= 2.5;
         obstacle.style.left = obstacleLeft + "px";
         topObstacle.style.left = obstacleLeft + "px";
       }
@@ -73,7 +73,7 @@ const game = () => {
       }
     };
     let TimerId = setInterval(moveObstacle, 20);
-    setTimeout(generateObstacle, 3000);
+    setTimeout(generateObstacle, 2000);
   };
 
   generateObstacle();
@@ -81,9 +81,12 @@ const game = () => {
   const crashed = () => {
     bird.style.WebkitTransitionDuration = ".5s";
     bird.style.webkitTransform = "rotate(50deg)";
-    bird.animate({
-      bottom: 0
-    }, 5000);
+    bird.animate(
+      {
+        bottom: 0,
+      },
+      5000
+    );
   };
 
   const gameOver = () => {
@@ -96,8 +99,10 @@ const game = () => {
     const reload = () => {
       window.location.reload();
     };
-    document.addEventListener("keyup", reload);
-    document.addEventListener("click", reload);
+    setTimeout(() => {
+      document.addEventListener("keyup", reload);
+      document.addEventListener("click", reload);
+    }, 1000);
   };
 };
 
