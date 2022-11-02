@@ -11,6 +11,7 @@ const game = () => {
   let isGameOver = false;
   let gap = 430;
   let score = 0;
+  let timeoutId;
 
   const startGame = () => {
     birdBottom -= gravity;
@@ -79,7 +80,7 @@ const game = () => {
       }
     };
     let TimerId = setInterval(moveObstacle, 20);
-    setTimeout(generateObstacle, 2000);
+    timeoutId = setTimeout(generateObstacle, 2000);
   };
 
   generateObstacle();
@@ -98,6 +99,7 @@ const game = () => {
   const gameOver = () => {
     crashed();
     clearInterval(gameTimerId);
+    clearTimeout(timeoutId);
     isGameOver = true;
     document.removeEventListener("keyup", control);
     document.removeEventListener("click", jump);
